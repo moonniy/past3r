@@ -19,7 +19,8 @@ from django.urls import include, path
 from app.views import new_paste
 
 urlpatterns = [
-    path(r'', new_paste, name='new_paste'),
+    path('', new_paste, name='new_paste'),
+    path('pastes/', include('app.urls')),
     path('admin/', admin.site.urls),
     path('api/v1/pastes', include(('app.urls_api', 'app'), namespace='api-pastes'))
 ]

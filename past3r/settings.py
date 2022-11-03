@@ -145,4 +145,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DOMAIN = 'http://127.0.0.1:8000'
 CACHE_DIR = path.abspath('cache')
 WEB3_STORAGE_URL = "https://api.web3.storage"
-WEB3_STORAGE_TOKEN = ""
+WEB3_STORAGE_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDAzYzUzMTMxNDk2Mjc1MDBGYzJDQzJBMDAzOTk0ZDIwMjBBYThiNDUiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NjgwMzcxNjEyMTQsIm5hbWUiOiJnYWxheHkifQ.WSMkSbZdGnhvBw8sJ8hU3txcmaDMcq0-kwBgcPZtgfA"

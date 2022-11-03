@@ -78,6 +78,9 @@ class Paste(models.Model):
 
         return {*file_categories, *self.categories}
 
+    def get_cid_url(self):
+        return f'https://{self.cid}.ipfs.w3s.link'
+
 
 class File(models.Model):
     path = models.CharField(max_length=120, blank=True, default='')

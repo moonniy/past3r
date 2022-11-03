@@ -83,7 +83,7 @@ def create_paster(request):
 
     return Response({
         'id': _id,
-        'url': f'{DOMAIN}/p/{_id}',
+        'url': f'{DOMAIN}/pastes/{_id}',
         'gist': new_paste.get_default_dict()
     })
 
@@ -92,3 +92,14 @@ def new_paste(request):
     return render(request, 'new.html', context={
         'title': 'Create Paste'
     })
+
+
+def gist_details(request, paste_id):
+    paste = Paste.objects.get(uuid=paste_id)
+    files = paste.file_set.all()
+    context = {
+        'paste': paste,
+        'files': files,
+        'title': paste.description or f'Sia gist {paste.uuid}'
+    }
+    return render(request, 'details.html', context=context)
