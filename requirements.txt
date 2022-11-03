@@ -1,4 +1,4 @@
-celery
+celery[redis]==5.2.7
 djangorestframework
 gitdb==4.0.2
 GitPython==3.1.0
