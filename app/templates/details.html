@@ -76,9 +76,9 @@
 
     $('.download').on('click', (e) => {
         e.preventDefault();
-      const element = $(e.target);
-      console.log(e)
-      $.ajax({
+        const element = $(e.target);
+
+        $.ajax({
             url: element.attr('href'),
             success: download.bind(true, "text/plain", element.data('name'))
         });

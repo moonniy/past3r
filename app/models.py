@@ -78,8 +78,9 @@ class Paste(models.Model):
 
         return {*file_categories, *self.categories}
 
-    def get_cid_url(self):
-        return f'https://{self.cid}.ipfs.w3s.link'
+    def preview_file(self):
+        file = self.file_set.first()
+        return file
 
 
 class File(models.Model):

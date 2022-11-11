@@ -4,6 +4,7 @@ import uuid
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
+from django.db.models import Q
 
 from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.renderers import JSONRenderer
@@ -94,7 +95,29 @@ def new_paste(request):
     })
 
 
-def gist_details(request, paste_id):
+def get_pastes(request):
+
+    pastes = Paste.objects.filter(active=True, visibility='public')
+    try:
+        q = request.GET['profile']
+        pastes = pastes.filter(user_address=q)
+    except:
+        pass
+    try:
+        q = request.GET['q']
+        pastes = pastes.filter(Q(description__icontains=q) | Q(file__syntax__icontains=q) | Q(categories__icontains=q))
+    except:
+        pass
+    pastes = pastes.exclude(manifest_cid=None).distinct().order_by('-created')[:10]
+
+    context = {
+        'pastes': pastes,
+        'title': 'All pastes'
+    }
+    return render(request, 'list.html', context=context)
+
+
+def paste_details(request, paste_id):
     paste = Paste.objects.get(uuid=paste_id)
     files = paste.file_set.all()
     context = {

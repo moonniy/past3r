@@ -1,6 +1,7 @@
 import os
 import shutil
 
+from app.models import Paste
 from celery import shared_task
 import requests
 
