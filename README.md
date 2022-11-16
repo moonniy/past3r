@@ -12,16 +12,14 @@ Requires docker-compose installed before start.
 1. Create virtual enviroment and install dependencies
 ```shell
 $ python3 -m venv --prompt paster  .env
+$ sudo apt install postgresql-server postgresql-server-dev-all redis
 $ pip install -r requirements.txt
 ```
-2. Create the DB
-```shell
-$ docker-compose up -d
-```
-3. Run migrations and start the server
+2. Run migrations and start the server
 ```shell
 $ python manage.py migrate
 $ python manage.py runserver
+celery -A past3r worker -l INFO
 ```
 
 ## Flow 
